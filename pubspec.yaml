@@ -1,0 +1,63 @@
+name: yuyingbao
+description: 育婴宝 - Baby care tracking app with local storage
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.0
+  flutter: '>=3.24.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State management
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+  flutter_hooks: ^0.20.5
+  hooks_riverpod: ^2.6.1
+
+  # Database
+  drift: ^2.22.1
+  sqlite3_flutter_libs: ^0.5.28
+  path_provider: ^2.1.5
+  path: ^1.9.1
+
+  # Router
+  go_router: ^14.8.1
+
+  # Charts
+  fl_chart: ^0.70.2
+
+  # Notifications
+  flutter_local_notifications: ^18.0.1
+
+  # Theme
+  flex_color_scheme: ^8.1.0
+
+  # Utils
+  intl: ^0.20.0
+  uuid: ^4.5.1
+  json_annotation: ^4.9.0
+  share_plus: ^10.1.4
+  image_picker: ^1.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner: ^2.4.14
+  drift_dev: ^2.22.1
+  riverpod_generator: ^2.6.3
+  json_serializable: ^6.9.4
+  riverpod_lint: ^2.6.3
+  custom_lint: ^0.7.5
+  mockito: ^5.4.5
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/who/
+    - assets/knowledge/
