@@ -5,6 +5,7 @@ import '../../features/record/pages/record_list_page.dart';
 import '../../features/statistics/pages/statistics_page.dart';
 import '../../features/knowledge/pages/knowledge_list_page.dart';
 import '../../features/settings/pages/settings_page.dart';
+import '../../features/baby/pages/baby_list_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -36,7 +37,13 @@ final appRouter = GoRouter(
         ]),
         StatefulShellBranch(routes: [
           GoRoute(
-              path: '/settings', builder: (_, __) => const SettingsPage()),
+            path: '/settings',
+            builder: (_, __) => const SettingsPage(),
+            routes: [
+              GoRoute(
+                  path: 'babies', builder: (_, __) => const BabyListPage()),
+            ],
+          ),
         ]),
       ],
     ),
