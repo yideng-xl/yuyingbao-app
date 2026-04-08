@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../core/database/database_providers.dart';
 import '../../../shared/utils/date_utils.dart';
+import '../../../shared/widgets/baby_switcher.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../../baby/providers/baby_providers.dart';
 import '../providers/record_providers.dart';
@@ -42,11 +43,8 @@ class RecordListPage extends HookConsumerWidget {
     }
 
     void openAddForm() {
-      showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        backgroundColor: Colors.transparent,
-        builder: (_) => const RecordFormSheet(),
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => const RecordFormSheet()),
       );
     }
 
@@ -55,29 +53,26 @@ class RecordListPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-              icon: const Icon(Icons.chevron_left),
-              onPressed: goToPrevDay,
-              tooltip: '前一天',
+        title: const BabySwitcher(),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.chevron_left),
+            onPressed: goToPrevDay,
+            tooltip: '前一天',
+          ),
+          TextButton(
+            onPressed: pickDate,
+            child: Text(
+              dateLabel,
+              style: Theme.of(context).textTheme.titleMedium,
             ),
-            TextButton(
-              onPressed: pickDate,
-              child: Text(
-                dateLabel,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-            ),
-            IconButton(
-              icon: const Icon(Icons.chevron_right),
-              onPressed: isToday ? null : goToNextDay,
-              tooltip: '后一天',
-            ),
-          ],
-        ),
-        centerTitle: true,
+          ),
+          IconButton(
+            icon: const Icon(Icons.chevron_right),
+            onPressed: isToday ? null : goToNextDay,
+            tooltip: '后一天',
+          ),
+        ],
       ),
       floatingActionButton: baby == null
           ? null

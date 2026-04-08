@@ -130,12 +130,37 @@ class RecordTile extends StatelessWidget {
       background: Container(
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.only(right: 20),
-        color: Theme.of(context).colorScheme.errorContainer,
-        child: Icon(
-          Icons.delete_outline,
-          color: Theme.of(context).colorScheme.onErrorContainer,
+        color: Theme.of(context).colorScheme.error,
+        child: const Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.delete_outline, color: Colors.white),
+            SizedBox(width: 4),
+            Text('删除', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            SizedBox(width: 8),
+          ],
         ),
       ),
+      confirmDismiss: (_) async {
+        return await showDialog<bool>(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('确认删除'),
+            content: Text('确定要删除这条${type.label}记录吗？'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: const Text('取消'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                style: TextButton.styleFrom(foregroundColor: Colors.red),
+                child: const Text('删除'),
+              ),
+            ],
+          ),
+        ) ?? false;
+      },
       onDismissed: (_) => onDelete(),
       child: ListTile(
         onTap: onTap,

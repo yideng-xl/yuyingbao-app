@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../features/baby/providers/baby_providers.dart';
 import '../../../services/statistics_service.dart';
+import '../../../shared/widgets/baby_switcher.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../providers/statistics_providers.dart';
 import '../widgets/diaper_chart.dart';
@@ -33,8 +34,7 @@ class StatisticsPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('${baby.name} · 统计'),
-        centerTitle: false,
+        title: const BabySwitcher(),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),

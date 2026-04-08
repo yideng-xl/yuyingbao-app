@@ -35,9 +35,13 @@ final selectedDateRecordsProvider = StreamProvider<List<BabyRecord>>((ref) {
 });
 
 /// Future of the last 10 records for the selected baby.
+/// Watches todayRecordsProvider to auto-refresh when records change.
 final recentRecordsProvider = FutureProvider<List<BabyRecord>>((ref) {
   final baby = ref.watch(selectedBabyProvider);
   if (baby == null) return Future.value([]);
+
+  // Watch the stream so we refresh when records are added/deleted
+  ref.watch(todayRecordsProvider);
 
   return ref.watch(recordRepositoryProvider).getRecentRecords(
         babyId: baby.id,

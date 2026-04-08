@@ -120,7 +120,7 @@ class GrowthCurveChart extends StatelessWidget {
           padding: const EdgeInsets.only(left: 8, bottom: 8),
           child: Row(
             children: [
-              Text(title,
+              Text('$title ($yLabel)',
                   style: Theme.of(context).textTheme.titleSmall),
               const SizedBox(width: 12),
               const _LegendDot(color: Color(0xFF4CAF50), label: 'P50'),
@@ -158,11 +158,11 @@ class GrowthCurveChart extends StatelessWidget {
                 leftTitles: AxisTitles(
                   sideTitles: SideTitles(
                     showTitles: true,
-                    reservedSize: 44,
+                    reservedSize: 28,
                     getTitlesWidget: (value, meta) => SideTitleWidget(
                       meta: meta,
                       child: Text(
-                        '${value.toStringAsFixed(1)}$yLabel',
+                        value.toStringAsFixed(0),
                         style: Theme.of(context).textTheme.labelSmall,
                       ),
                     ),

@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../core/constants/enums.dart';
 import '../providers/record_providers.dart';
 
+/// Full-screen page for adding a record. Push via Navigator.
 class RecordFormSheet extends HookConsumerWidget {
   const RecordFormSheet({super.key});
 
@@ -47,11 +48,7 @@ class RecordFormSheet extends HookConsumerWidget {
       if (tod != null) {
         final now = selectedTime.value;
         selectedTime.value = DateTime(
-          now.year,
-          now.month,
-          now.day,
-          tod.hour,
-          tod.minute,
+          now.year, now.month, now.day, tod.hour, tod.minute,
         );
       }
     }
@@ -117,141 +114,91 @@ class RecordFormSheet extends HookConsumerWidget {
       }
     }
 
-    return DraggableScrollableSheet(
-      initialChildSize: 0.7,
-      minChildSize: 0.5,
-      maxChildSize: 0.95,
-      builder: (context, scrollController) {
-        return Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surface,
-            borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(20)),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('添加记录'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: FilledButton(
+              onPressed: isSaving.value ? null : save,
+              child: isSaving.value
+                  ? const SizedBox(
+                      width: 16, height: 16,
+                      child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                    )
+                  : const Text('保存'),
+            ),
           ),
-          child: Column(
-            children: [
-              // Handle
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                child: Container(
-                  width: 40,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.outlineVariant,
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-              ),
-              // Header
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
-                child: Row(
-                  children: [
-                    Text(
-                      '添加记录',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    const Spacer(),
-                    IconButton(
-                      icon: const Icon(Icons.close),
-                      onPressed: () => Navigator.of(context).pop(),
-                    ),
-                  ],
-                ),
-              ),
-              const Divider(height: 1),
-              // Scrollable form
-              Expanded(
-                child: ListView(
-                  controller: scrollController,
-                  padding: const EdgeInsets.all(20),
-                  children: [
-                    // Record type chips
-                    Text(
-                      '记录类型',
-                      style: Theme.of(context).textTheme.labelLarge,
-                    ),
-                    const SizedBox(height: 8),
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
-                      children: RecordType.values.map((type) {
-                        return ChoiceChip(
-                          label: Text(type.label),
-                          selected: selectedType.value == type,
-                          onSelected: (selected) {
-                            if (selected) selectedType.value = type;
-                          },
-                        );
-                      }).toList(),
-                    ),
-                    const SizedBox(height: 20),
-
-                    // Time picker
-                    ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      leading: const Icon(Icons.access_time),
-                      title: const Text('时间'),
-                      trailing: Text(
-                        TimeOfDay.fromDateTime(selectedTime.value)
-                            .format(context),
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                      onTap: pickTime,
-                    ),
-                    const Divider(),
-                    const SizedBox(height: 12),
-
-                    // Dynamic fields
-                    _buildTypeFields(
-                      context: context,
-                      type: selectedType.value,
-                      bfSide: bfSide,
-                      durationController: durationController,
-                      amountController: amountController,
-                      solidType: solidType,
-                      solidIngredientsController: solidIngredientsController,
-                      diaperTexture: diaperTexture,
-                      diaperColor: diaperColor,
-                      hasUrine: hasUrine,
-                      heightController: heightController,
-                      weightController: weightController,
-                      nutritionController: nutritionController,
-                    ),
-
-                    const SizedBox(height: 12),
-
-                    // Note field
-                    TextField(
-                      controller: noteController,
-                      decoration: const InputDecoration(
-                        labelText: '备注（可选）',
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(Icons.notes),
-                      ),
-                      maxLines: 2,
-                    ),
-                    const SizedBox(height: 24),
-
-                    // Save button
-                    FilledButton(
-                      onPressed: isSaving.value ? null : save,
-                      child: isSaving.value
-                          ? const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(strokeWidth: 2),
-                            )
-                          : const Text('保存'),
-                    ),
-                    const SizedBox(height: 20),
-                  ],
-                ),
-              ),
-            ],
+        ],
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        children: [
+          // Record type chips
+          Text('记录类型', style: Theme.of(context).textTheme.labelLarge),
+          const SizedBox(height: 8),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: RecordType.values.map((type) {
+              return ChoiceChip(
+                label: Text(type.label),
+                selected: selectedType.value == type,
+                onSelected: (selected) {
+                  if (selected) selectedType.value = type;
+                },
+              );
+            }).toList(),
           ),
-        );
-      },
+          const SizedBox(height: 20),
+
+          // Time picker
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(Icons.access_time),
+            title: const Text('时间'),
+            trailing: Text(
+              TimeOfDay.fromDateTime(selectedTime.value).format(context),
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            onTap: pickTime,
+          ),
+          const Divider(),
+          const SizedBox(height: 12),
+
+          // Dynamic fields
+          _buildTypeFields(
+            context: context,
+            type: selectedType.value,
+            bfSide: bfSide,
+            durationController: durationController,
+            amountController: amountController,
+            solidType: solidType,
+            solidIngredientsController: solidIngredientsController,
+            diaperTexture: diaperTexture,
+            diaperColor: diaperColor,
+            hasUrine: hasUrine,
+            heightController: heightController,
+            weightController: weightController,
+            nutritionController: nutritionController,
+          ),
+
+          const SizedBox(height: 12),
+
+          // Note field
+          TextField(
+            controller: noteController,
+            decoration: const InputDecoration(
+              labelText: '备注（可选）',
+              border: OutlineInputBorder(),
+              prefixIcon: Icon(Icons.notes),
+            ),
+            maxLines: 2,
+          ),
+          const SizedBox(height: 32),
+        ],
+      ),
     );
   }
 
@@ -311,8 +258,7 @@ class RecordFormSheet extends HookConsumerWidget {
           children: [
             TextField(
               controller: amountController,
-              keyboardType:
-                  const TextInputType.numberWithOptions(decimal: true),
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
               decoration: const InputDecoration(
                 labelText: '量（ml）',
                 border: OutlineInputBorder(),
@@ -405,8 +351,7 @@ class RecordFormSheet extends HookConsumerWidget {
           children: [
             TextField(
               controller: heightController,
-              keyboardType:
-                  const TextInputType.numberWithOptions(decimal: true),
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
               decoration: const InputDecoration(
                 labelText: '身高（cm）',
                 border: OutlineInputBorder(),
@@ -416,8 +361,7 @@ class RecordFormSheet extends HookConsumerWidget {
             const SizedBox(height: 16),
             TextField(
               controller: weightController,
-              keyboardType:
-                  const TextInputType.numberWithOptions(decimal: true),
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
               decoration: const InputDecoration(
                 labelText: '体重（kg）',
                 border: OutlineInputBorder(),

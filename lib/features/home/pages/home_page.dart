@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../baby/providers/baby_providers.dart';
 import '../../record/widgets/record_form_sheet.dart';
 import '../../../core/constants/enums.dart';
+import '../../../shared/widgets/baby_switcher.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../widgets/daily_summary_card.dart';
 import '../widgets/quick_record_buttons.dart';
@@ -12,11 +13,8 @@ class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   void _openRecordForm(BuildContext context, {RecordType? initialType}) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (_) => const RecordFormSheet(),
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => const RecordFormSheet()),
     );
   }
 
@@ -27,24 +25,7 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: baby != null
-            ? Row(
-                children: [
-                  CircleAvatar(
-                    radius: 16,
-                    backgroundColor:
-                        Theme.of(context).colorScheme.primaryContainer,
-                    child: Text(
-                      baby.name.isNotEmpty ? baby.name[0] : '?',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).colorScheme.onPrimaryContainer,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Text(baby.name),
-                ],
-              )
+            ? const BabySwitcher()
             : const Text('育婴宝'),
         actions: [
           if (baby != null)
