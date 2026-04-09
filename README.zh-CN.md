@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)
-[![Version](https://img.shields.io/badge/version-0.5.0-EC4899)](https://github.com/yideng-xl/yuyingbao-app/releases)
+[![Version](https://img.shields.io/badge/version-0.6.0-EC4899)](https://github.com/yideng-xl/yuyingbao-app/releases)
 
 [English](./README.md) | 中文
 
@@ -31,6 +31,9 @@
 - **育儿知识库** — 按月龄分类，支持搜索和筛选
 - **4 套主题皮肤** — 温馨粉、清新蓝、自然绿、暖阳橙，设置页即时切换
 - **Claymorphism 风格** — 柔和 3D、大圆角、轻柔阴影，温馨友好的视觉体验
+- **多语言支持** — 中文、英文、日文、韩文，设置页即时切换
+- **喂奶提醒** — 固定间隔通知，不错过每次喂奶
+- **成长曲线叠加** — 宝宝全量历史数据叠加在 WHO 百分位曲线上
 - **100% 本地存储** — 无云端、无账号，数据不离开设备
 - **跨平台** — 支持 iOS 与 Android
 
@@ -109,9 +112,9 @@ UI 层（Flutter Widgets）
 - [x] 多宝宝支持，任意页面切换
 - [x] 4 套主题皮肤（Claymorphism 风格）
 - [x] 全屏记录表单 + 删除确认
-- [ ] 数据导入 / 导出（文件选择器）
-- [ ] 喂奶间隔提醒通知
-- [ ] 生长数据叠加在 WHO 曲线图上
+- [x] 多语言支持（中 / 英 / 日 / 韩）
+- [x] 喂奶间隔提醒通知
+- [x] 生长数据叠加在 WHO 曲线图上（全量历史）
 - [ ] 深色模式
 - [ ] 云端同步（可选）
 - [ ] 家庭共享

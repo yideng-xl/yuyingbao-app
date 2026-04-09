@@ -31,6 +31,10 @@ class KnowledgeItem {
 }
 
 class KnowledgeRepository {
+  final String _langCode;
+
+  KnowledgeRepository({String langCode = 'zh'}) : _langCode = langCode;
+
   List<KnowledgeItem>? _cache;
 
   Future<List<KnowledgeItem>> getAll() async {
@@ -54,8 +58,16 @@ class KnowledgeRepository {
   }
 
   Future<List<KnowledgeItem>> _loadFromAssets() async {
-    final jsonStr =
-        await rootBundle.loadString('assets/knowledge/knowledge_data.json');
+    // Try locale-specific file first, fall back to default (zh)
+    final suffix = _langCode == 'zh' ? '' : '_$_langCode';
+    final path = 'assets/knowledge/knowledge_data$suffix.json';
+    String jsonStr;
+    try {
+      jsonStr = await rootBundle.loadString(path);
+    } catch (_) {
+      // Fallback to Chinese
+      jsonStr = await rootBundle.loadString('assets/knowledge/knowledge_data.json');
+    }
     final List<dynamic> jsonList = json.decode(jsonStr) as List<dynamic>;
     return jsonList
         .map((j) => KnowledgeItem.fromJson(j as Map<String, dynamic>))

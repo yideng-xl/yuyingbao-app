@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 import 'package:intl/intl.dart';
 import '../../../repositories/record_repository.dart';
 
@@ -11,12 +12,13 @@ class DiaperChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     final dailyCounts = _buildDailyCounts();
 
     if (dailyCounts.isEmpty) {
-      return const SizedBox(
+      return SizedBox(
         height: 200,
-        child: Center(child: Text('暂无换尿布数据')),
+        child: Center(child: Text(s.noDiaperData)),
       );
     }
 
@@ -85,7 +87,7 @@ class DiaperChart extends StatelessWidget {
                   return SideTitleWidget(
                     meta: meta,
                     child: Text(
-                      '${value.toInt()}次',
+                      '${value.toInt()}${s.diaperCountUnit}',
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                   );
@@ -121,7 +123,7 @@ class DiaperChart extends StatelessWidget {
                   final idx = spot.x.toInt();
                   final date = sortedDates[idx];
                   return LineTooltipItem(
-                    '${dateFormat.format(date)}\n${spot.y.toInt()} 次换尿布',
+                    '${dateFormat.format(date)}\n${s.diaperChangesCount(spot.y.toInt())}',
                     TextStyle(
                       color: Theme.of(context).colorScheme.onInverseSurface,
                       fontSize: 12,

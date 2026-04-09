@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 
 /// A line chart showing WHO percentile curves alongside the baby's growth data.
 ///
@@ -23,10 +24,11 @@ class GrowthCurveChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     if (whoData.isEmpty) {
-      return const SizedBox(
+      return SizedBox(
         height: 260,
-        child: Center(child: Text('暂无参考数据')),
+        child: Center(child: Text(s.noReferenceData)),
       );
     }
 
@@ -129,7 +131,7 @@ class GrowthCurveChart extends StatelessWidget {
                   color: Theme.of(context).colorScheme.outline,
                   label: 'P3/P15/P85/P97'),
               const SizedBox(width: 8),
-              const _LegendDot(color: babyColor, label: '宝宝'),
+              _LegendDot(color: babyColor, label: s.baby),
             ],
           ),
         ),
@@ -190,7 +192,7 @@ class GrowthCurveChart extends StatelessWidget {
                   getTooltipItems: (spots) {
                     return spots.map((spot) {
                       return LineTooltipItem(
-                        '${spot.x.toStringAsFixed(0)}月: ${spot.y.toStringAsFixed(1)}$yLabel',
+                        '${spot.x.toStringAsFixed(0)}${s.monthLabel}${spot.y.toStringAsFixed(1)}$yLabel',
                         TextStyle(
                           color: spot.bar.color ?? Colors.white,
                           fontSize: 11,

@@ -1,0 +1,231 @@
+{
+  "@@locale": "zh",
+
+  "appTitle": "育婴宝",
+
+  "navHome": "首页",
+  "navRecords": "记录",
+  "navStatistics": "统计",
+  "navKnowledge": "知识",
+  "navSettings": "设置",
+
+  "switchBaby": "切换宝宝",
+
+  "todayOverview": "今日概览",
+  "feedingCount": "喂奶",
+  "feedingCountUnit": "次",
+  "milkVolume": "奶量",
+  "diaperCount": "换尿布",
+  "diaperCountUnit": "次",
+  "waterVolume": "饮水",
+  "recentRecords": "最近记录",
+  "noRecordsYet": "还没有记录，快去添加吧",
+  "noBabyYet": "还没有添加宝宝，请先添加宝宝",
+  "addRecord": "添加记录",
+  "addBabyFirst": "请先添加宝宝",
+  "addBabyFirstInfo": "请先添加宝宝信息",
+
+  "recordTypeBreastfeeding": "母乳亲喂",
+  "recordTypeBottle": "瓶喂",
+  "recordTypeFormula": "配方奶",
+  "recordTypeSolid": "辅食",
+  "recordTypeDiaper": "尿布",
+  "recordTypeGrowth": "成长记录",
+  "recordTypeWater": "饮水",
+  "recordTypeNutrition": "营养补充",
+
+  "breastfeedingSideLeft": "左侧",
+  "breastfeedingSideRight": "右侧",
+  "breastfeedingSideBoth": "双侧",
+
+  "solidTypeRiceCereal": "米粉",
+  "solidTypeVegetablePuree": "蔬菜泥",
+  "solidTypeFruitPuree": "水果泥",
+  "solidTypeMeatPuree": "肉泥",
+  "solidTypeEggYolk": "蛋黄",
+  "solidTypeOther": "其他",
+
+  "diaperTextureWatery": "稀水样",
+  "diaperTextureSoft": "软便",
+  "diaperTextureNormal": "正常",
+  "diaperTextureHard": "干硬",
+
+  "diaperColorYellow": "黄色",
+  "diaperColorGreen": "绿色",
+  "diaperColorBrown": "褐色",
+  "diaperColorBlack": "黑色",
+
+  "genderMale": "男",
+  "genderFemale": "女",
+  "genderBoy": "男宝",
+  "genderGirl": "女宝",
+
+  "skinWarmPink": "温馨粉",
+  "skinWarmPinkDesc": "柔粉色调，温馨甜蜜",
+  "skinOceanBlue": "清新蓝",
+  "skinOceanBlueDesc": "蓝色系，清爽沉稳",
+  "skinNatureGreen": "自然绿",
+  "skinNatureGreenDesc": "绿色系，清新自然",
+  "skinSunnyOrange": "暖阳橙",
+  "skinSunnyOrangeDesc": "暖橙色调，活力满满",
+
+  "today": "今天",
+  "yesterday": "昨天",
+  "dayBeforeYesterday": "前天",
+
+  "edit": "编辑",
+  "delete": "删除",
+  "save": "保存",
+  "cancel": "取消",
+
+  "recordType": "记录类型",
+  "time": "时间",
+  "noteOptional": "备注（可选）",
+  "breastfeedingSide": "喂奶侧",
+  "durationMinutes": "时长（分钟）",
+  "solidType": "辅食类型",
+  "ingredientOptional": "食材（可选）",
+  "texture": "质地",
+  "color": "颜色",
+  "hasUrine": "有尿",
+  "hasUrineText": "有尿",
+  "nutritionType": "营养品类型",
+
+  "babyManagement": "宝宝管理",
+  "noBabyInfo": "还没有宝宝信息",
+  "deleteBaby": "删除宝宝",
+  "deleteBabyConfirm": "确定要删除「{name}」的所有信息吗？此操作不可恢复。",
+  "@deleteBabyConfirm": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "editBaby": "编辑宝宝",
+  "addBaby": "添加宝宝",
+  "babyName": "宝宝姓名",
+  "babyNameHint": "请输入宝宝姓名",
+  "babyNameRequired": "请输入宝宝姓名",
+  "gender": "性别",
+  "birthDate": "出生日期",
+  "optional": "可选",
+  "invalidNumber": "请输入有效数字",
+
+  "sectionTheme": "主题风格",
+  "sectionBabyManagement": "宝宝管理",
+  "sectionAbout": "关于",
+  "addBabyHint": "点击右下角 + 添加宝宝",
+  "appName": "育婴宝",
+  "version": "版本 {version}",
+  "@version": {
+    "placeholders": {
+      "version": { "type": "String" }
+    }
+  },
+  "openSource": "开源地址",
+
+  "feedingVolumeTitle": "喂养量（ml）",
+  "whoWeightTitle": "WHO 体重曲线（kg）",
+  "whoHeightTitle": "WHO 身高曲线（cm）",
+  "diaperCountTitle": "换尿布次数",
+  "weight": "体重",
+  "height": "身高",
+  "noReferenceData": "暂无参考数据",
+  "noFeedingData": "暂无喂养数据",
+  "noDiaperData": "暂无换尿布数据",
+  "baby": "宝宝",
+  "loadError": "加载失败: {error}",
+  "@loadError": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  },
+  "monthLabel": "{month}月",
+  "@monthLabel": {
+    "placeholders": {
+      "month": { "type": "String" }
+    }
+  },
+
+  "timeRangeToday": "今天",
+  "timeRangeWeek": "近7天",
+  "timeRangeMonth": "近30天",
+
+  "prevDay": "前一天",
+  "nextDay": "后一天",
+  "confirmDelete": "确认删除",
+  "confirmDeleteRecord": "确定要删除这条记录吗？此操作不可恢复。",
+
+  "knowledgeTitle": "育儿知识",
+  "knowledgeAll": "全部",
+  "knowledgeCategoryFeeding": "喂养",
+  "knowledgeCategoryHealth": "健康",
+  "knowledgeCategoryDevelopment": "发育",
+  "knowledgeCategorySolid": "辅食",
+  "noArticles": "暂无相关文章",
+
+  "feedingReminder": "喂奶提醒",
+  "feedingReminderDesc": "设置固定间隔提醒喂奶",
+  "feedingReminderEnabled": "开启提醒",
+  "feedingIntervalHours": "间隔时间（小时）",
+  "feedingReminderNotification": "该给宝宝喂奶了！",
+  "feedingReminderTitle": "喂奶提醒",
+
+  "sectionLanguage": "语言",
+  "languageFollowSystem": "跟随系统",
+  "language": "语言",
+  "languageZh": "中文",
+  "languageEn": "English",
+  "languageJa": "日本語",
+  "languageKo": "한국어",
+
+  "birthHeightLabel": "出生身高 (cm)",
+  "birthWeightLabel": "出生体重 (kg)",
+  "birthPrefix": "出生",
+  "monthsAgo": "{months} 个月",
+  "@monthsAgo": {
+    "placeholders": {
+      "months": { "type": "String" }
+    }
+  },
+  "saveFailed": "保存失败",
+  "loadFailure": "加载失败",
+  "tapToAddBaby": "点击右下角 + 添加宝宝",
+  "confirmDeleteBaby": "确定要删除「{name}」的所有信息吗？此操作不可恢复。",
+  "@confirmDeleteBaby": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+
+  "searchArticles": "搜索文章...",
+  "ageRange0To6": "0-6月",
+  "ageRange6To12": "6-12月",
+  "ageRange12To24": "12-24月",
+  "amountMl": "量（ml）",
+  "heightCm": "身高（cm）",
+  "weightKg": "体重（kg）",
+  "durationMinutes": "时长（分钟）",
+  "recordLoadFailed": "加载失败：{error}",
+  "@recordLoadFailed": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  },
+  "timesPerDay": "{count}次",
+  "@timesPerDay": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "diaperChangesCount": "{count}次换尿布",
+  "@diaperChangesCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "durationMinutesUnit": "分钟",
+  "amountMlUnit": "ml",
+  "heightCmUnit": "cm",
+  "weightKgUnit": "kg",
+  "deleteRecordConfirm": "确定要删除这条{recordType}记录吗？"
+}

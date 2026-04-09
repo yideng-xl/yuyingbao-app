@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)
-[![Version](https://img.shields.io/badge/version-0.5.0-EC4899)](https://github.com/yideng-xl/yuyingbao-app/releases)
+[![Version](https://img.shields.io/badge/version-0.6.0-EC4899)](https://github.com/yideng-xl/yuyingbao-app/releases)
 
 [中文](./README.zh-CN.md) | English
 
@@ -31,6 +31,9 @@ A local-first baby care tracking app built with Flutter — no cloud, no account
 - **Knowledge base** — age-appropriate baby care articles with search and age filter
 - **4 theme skins** — Warm Pink, Ocean Blue, Nature Green, Sunny Orange — switch instantly in settings
 - **Claymorphism UI** — soft 3D, rounded corners, gentle shadows for a warm and friendly feel
+- **Multi-language** — Chinese, English, Japanese, Korean — switch in settings
+- **Feeding reminders** — fixed-interval notifications so you never miss a feeding
+- **Growth on WHO curves** — baby's full growth history plotted against WHO percentile lines
 - **100% local** — no cloud, no account, no data leaves your device
 - **Cross-platform** — iOS and Android
 
@@ -109,9 +112,9 @@ Data Layer (drift/SQLite + JSON Assets)
 - [x] Multi-baby support with instant switching
 - [x] 4 theme skins (Claymorphism style)
 - [x] Full-screen record form with delete confirmation
-- [ ] Data export / import (file picker)
-- [ ] Feeding interval notifications
-- [ ] Growth data plotted on WHO curve chart
+- [x] Multi-language support (zh / en / ja / ko)
+- [x] Feeding interval reminder notifications
+- [x] Growth data plotted on WHO curve chart (full history)
 - [ ] Dark mode
 - [ ] Cloud sync (optional)
 - [ ] Family sharing

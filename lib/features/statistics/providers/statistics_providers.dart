@@ -9,17 +9,6 @@ enum StatsTimeRange {
   today,
   week,
   month;
-
-  String get label {
-    switch (this) {
-      case StatsTimeRange.today:
-        return '今天';
-      case StatsTimeRange.week:
-        return '近7天';
-      case StatsTimeRange.month:
-        return '近30天';
-    }
-  }
 }
 
 /// Currently selected time range on the statistics page.
@@ -51,6 +40,14 @@ final statsRecordsProvider = FutureProvider<List<BabyRecord>>((ref) async {
         start: start,
         end: end,
       );
+});
+
+/// All growth records for the selected baby (not filtered by time range).
+/// Used for WHO growth curve overlay.
+final allGrowthRecordsProvider = FutureProvider<List<BabyRecord>>((ref) async {
+  final baby = ref.watch(selectedBabyProvider);
+  if (baby == null) return [];
+  return ref.read(recordRepositoryProvider).getAllRecords(baby.id);
 });
 
 /// WHO weight data loaded by gender ('male' or 'female').

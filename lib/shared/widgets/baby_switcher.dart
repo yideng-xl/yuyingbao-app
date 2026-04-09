@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 import '../../core/database/app_database.dart';
 import '../../core/theme/app_theme.dart';
 import '../../features/baby/providers/baby_providers.dart';
@@ -73,6 +74,7 @@ class BabySwitcher extends ConsumerWidget {
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       builder: (context) {
+        final s = S.of(context);
         return SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -87,7 +89,7 @@ class BabySwitcher extends ConsumerWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(16),
-                child: Text('切换宝宝', style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                child: Text(s.switchBaby, style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 )),
               ),

@@ -1,0 +1,210 @@
+{
+  "@@locale": "ja",
+
+  "appTitle": "育児宝",
+
+  "navHome": "ホーム",
+  "navRecords": "記録",
+  "navStatistics": "統計",
+  "navKnowledge": "知識",
+  "navSettings": "設定",
+
+  "switchBaby": "赤ちゃん切替",
+
+  "todayOverview": "今日のまとめ",
+  "feedingCount": "授乳",
+  "feedingCountUnit": "回",
+  "milkVolume": "ミルク量",
+  "diaperCount": "おむつ替え",
+  "diaperCountUnit": "回",
+  "waterVolume": "水分量",
+  "recentRecords": "最近の記録",
+  "noRecordsYet": "まだ記録がありません。追加しましょう！",
+  "noBabyYet": "赤ちゃんがまだ登録されていません。先に追加してください",
+  "addRecord": "記録を追加",
+  "addBabyFirst": "先に赤ちゃんを追加してください",
+  "addBabyFirstInfo": "先に赤ちゃん情報を追加してください",
+
+  "recordTypeBreastfeeding": "母乳",
+  "recordTypeBottle": "哺乳瓶",
+  "recordTypeFormula": "ミルク",
+  "recordTypeSolid": "離乳食",
+  "recordTypeDiaper": "おむつ",
+  "recordTypeGrowth": "成長記録",
+  "recordTypeWater": "水分",
+  "recordTypeNutrition": "サプリメント",
+
+  "breastfeedingSideLeft": "左",
+  "breastfeedingSideRight": "右",
+  "breastfeedingSideBoth": "両方",
+
+  "solidTypeRiceCereal": "おかゆ",
+  "solidTypeVegetablePuree": "野菜ペースト",
+  "solidTypeFruitPuree": "果物ペースト",
+  "solidTypeMeatPuree": "肉ペースト",
+  "solidTypeEggYolk": "卵黄",
+  "solidTypeOther": "その他",
+
+  "diaperTextureWatery": "水様",
+  "diaperTextureSoft": "軟便",
+  "diaperTextureNormal": "普通",
+  "diaperTextureHard": "硬い",
+
+  "diaperColorYellow": "黄色",
+  "diaperColorGreen": "緑色",
+  "diaperColorBrown": "茶色",
+  "diaperColorBlack": "黒色",
+
+  "genderMale": "男",
+  "genderFemale": "女",
+  "genderBoy": "男の子",
+  "genderGirl": "女の子",
+
+  "skinWarmPink": "ウォームピンク",
+  "skinWarmPinkDesc": "温かみのあるピンク",
+  "skinOceanBlue": "オーシャンブルー",
+  "skinOceanBlueDesc": "爽やかな青",
+  "skinNatureGreen": "ナチュラルグリーン",
+  "skinNatureGreenDesc": "新鮮な緑",
+  "skinSunnyOrange": "サニーオレンジ",
+  "skinSunnyOrangeDesc": "元気なオレンジ",
+
+  "today": "今日",
+  "yesterday": "昨日",
+  "dayBeforeYesterday": "一昨日",
+
+  "edit": "編集",
+  "delete": "削除",
+  "save": "保存",
+  "cancel": "キャンセル",
+
+  "recordType": "記録タイプ",
+  "time": "時間",
+  "noteOptional": "メモ（任意）",
+  "breastfeedingSide": "授乳側",
+  "durationMinutes": "時間（分）",
+  "solidType": "離乳食タイプ",
+  "ingredientOptional": "食材（任意）",
+  "texture": "形状",
+  "color": "色",
+  "hasUrine": "おしっこ",
+  "hasUrineText": "おしっこあり",
+  "nutritionType": "サプリメント種類",
+
+  "babyManagement": "赤ちゃん管理",
+  "noBabyInfo": "赤ちゃん情報がありません",
+  "deleteBaby": "赤ちゃん削除",
+  "deleteBabyConfirm": "「{name}」のすべての情報を削除しますか？この操作は取り消せません。",
+  "editBaby": "赤ちゃん編集",
+  "addBaby": "赤ちゃん追加",
+  "babyName": "名前",
+  "babyNameHint": "赤ちゃんの名前を入力",
+  "babyNameRequired": "名前を入力してください",
+  "gender": "性別",
+  "birthDate": "生年月日",
+  "optional": "任意",
+  "invalidNumber": "有効な数字を入力してください",
+
+  "sectionTheme": "テーマ",
+  "sectionBabyManagement": "赤ちゃん管理",
+  "sectionAbout": "アプリについて",
+  "addBabyHint": "＋をタップして赤ちゃんを追加",
+  "appName": "育児宝",
+  "version": "バージョン {version}",
+  "openSource": "ソースコード",
+
+  "feedingVolumeTitle": "授乳量（ml）",
+  "whoWeightTitle": "WHO 体重曲線（kg）",
+  "whoHeightTitle": "WHO 身長曲線（cm）",
+  "diaperCountTitle": "おむつ替え回数",
+  "weight": "体重",
+  "height": "身長",
+  "noReferenceData": "参考データなし",
+  "noFeedingData": "授乳データなし",
+  "noDiaperData": "おむつデータなし",
+  "baby": "赤ちゃん",
+  "loadError": "読み込み失敗: {error}",
+  "monthLabel": "{month}ヶ月",
+
+  "timeRangeToday": "今日",
+  "timeRangeWeek": "7日間",
+  "timeRangeMonth": "30日間",
+
+  "prevDay": "前の日",
+  "nextDay": "次の日",
+  "confirmDelete": "削除確認",
+  "confirmDeleteRecord": "この記録を削除しますか？この操作は取り消せません。",
+
+  "knowledgeTitle": "育児知識",
+  "knowledgeAll": "すべて",
+  "knowledgeCategoryFeeding": "授乳",
+  "knowledgeCategoryHealth": "健康",
+  "knowledgeCategoryDevelopment": "発達",
+  "knowledgeCategorySolid": "離乳食",
+  "noArticles": "記事がありません",
+
+  "feedingReminder": "授乳リマインダー",
+  "feedingReminderDesc": "一定間隔で授乳を通知",
+  "feedingReminderEnabled": "リマインダーON",
+  "feedingIntervalHours": "間隔（時間）",
+  "feedingReminderNotification": "赤ちゃんの授乳時間です！",
+  "feedingReminderTitle": "授乳リマインダー",
+
+  "sectionLanguage": "言語",
+  "languageFollowSystem": "システム設定に従う",
+  "language": "言語",
+  "languageZh": "中文",
+  "languageEn": "English",
+  "languageJa": "日本語",
+  "languageKo": "한국어",
+
+  "birthHeightLabel": "出生時身長 (cm)",
+  "birthWeightLabel": "出生時体重 (kg)",
+  "birthPrefix": "生まれ",
+  "monthsAgo": "{months} ヶ月",
+  "@monthsAgo": {
+    "placeholders": {
+      "months": { "type": "String" }
+    }
+  },
+  "saveFailed": "保存に失敗しました",
+  "loadFailure": "読み込み失敗",
+  "tapToAddBaby": "＋をタップして赤ちゃんを追加",
+  "confirmDeleteBaby": "「{name}」のすべての情報を削除しますか？この操作は取り消せません。",
+  "@confirmDeleteBaby": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+
+  "searchArticles": "記事を検索...",
+  "ageRange0To6": "0-6ヶ月",
+  "ageRange6To12": "6-12ヶ月",
+  "ageRange12To24": "12-24ヶ月",
+  "amountMl": "量（ml）",
+  "heightCm": "身長（cm）",
+  "weightKg": "体重（kg）",
+  "recordLoadFailed": "読み込み失敗：{error}",
+  "@recordLoadFailed": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  },
+  "timesPerDay": "{count}回",
+  "@timesPerDay": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "diaperChangesCount": "{count}回おむつ替え",
+  "@diaperChangesCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "durationMinutesUnit": "分",
+  "amountMlUnit": "ml",
+  "heightCmUnit": "cm",
+  "weightKgUnit": "kg",
+  "deleteRecordConfirm": "この{recordType}記録を削除しますか？"
+}

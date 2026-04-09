@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 import '../../../core/constants/enums.dart';
+import '../../../core/l10n/l10n_extensions.dart';
 import '../../../repositories/record_repository.dart';
 import '../../../shared/utils/date_utils.dart';
 
@@ -64,7 +66,7 @@ class RecordTile extends StatelessWidget {
     }
   }
 
-  String _subtitleFor(RecordType type) {
+  String _subtitleFor(RecordType type, S l10n) {
     switch (type) {
       case RecordType.breastfeeding:
         final side = record.breastfeedingSide != null
@@ -73,15 +75,15 @@ class RecordTile extends StatelessWidget {
                   (e) => e.name == record.breastfeedingSide,
                   orElse: () => BreastfeedingSide.left,
                 )
-                .label
+                .l10n(l10n)
             : '';
-        final duration = record.durationMin != null ? ' ${record.durationMin}分钟' : '';
+        final duration = record.durationMin != null ? ' ${record.durationMin}${l10n.durationMinutesUnit}' : '';
         return '$side$duration'.trim();
       case RecordType.bottle:
       case RecordType.formula:
       case RecordType.water:
         if (record.amountMl != null) {
-          return '${record.amountMl!.toStringAsFixed(0)}ml';
+          return '${record.amountMl!.toStringAsFixed(0)}${l10n.amountMlUnit}';
         }
         return '';
       case RecordType.solid:
@@ -91,7 +93,7 @@ class RecordTile extends StatelessWidget {
                 (e) => e.name == record.solidType,
                 orElse: () => SolidType.other,
               )
-              .label;
+              .l10n(l10n);
         }
         return '';
       case RecordType.diaper:
@@ -103,15 +105,15 @@ class RecordTile extends StatelessWidget {
                   (e) => e.name == record.diaperTexture,
                   orElse: () => DiaperTexture.normal,
                 )
-                .label,
+                .l10n(l10n),
           );
         }
-        if (record.hasUrine == true) parts.add('有尿');
+        if (record.hasUrine == true) parts.add(l10n.hasUrineText);
         return parts.join(' · ');
       case RecordType.growth:
         final parts = <String>[];
-        if (record.heightCm != null) parts.add('${record.heightCm}cm');
-        if (record.weightKg != null) parts.add('${record.weightKg}kg');
+        if (record.heightCm != null) parts.add('${record.heightCm}${l10n.heightCmUnit}');
+        if (record.weightKg != null) parts.add('${record.weightKg}${l10n.weightKgUnit}');
         return parts.join(' · ');
       case RecordType.nutrition:
         return record.nutritionTypes ?? '';
@@ -122,7 +124,8 @@ class RecordTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final type = _recordType;
     final color = _colorFor(type);
-    final subtitle = _subtitleFor(type);
+    final l10n = S.of(context);
+    final subtitle = _subtitleFor(type, l10n);
 
     return Dismissible(
       key: ValueKey(record.id),
@@ -131,13 +134,13 @@ class RecordTile extends StatelessWidget {
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.only(right: 20),
         color: Theme.of(context).colorScheme.error,
-        child: const Row(
+        child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.delete_outline, color: Colors.white),
-            SizedBox(width: 4),
-            Text('删除', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-            SizedBox(width: 8),
+            const Icon(Icons.delete_outline, color: Colors.white),
+            const SizedBox(width: 4),
+            Text(l10n.delete, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            const SizedBox(width: 8),
           ],
         ),
       ),
@@ -145,17 +148,17 @@ class RecordTile extends StatelessWidget {
         return await showDialog<bool>(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('确认删除'),
-            content: Text('确定要删除这条${type.label}记录吗？'),
+            title: Text(l10n.confirmDelete),
+            content: Text(l10n.deleteRecordConfirm(type.l10n(l10n))),
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(context).pop(false),
-                child: const Text('取消'),
+                child: Text(l10n.cancel),
               ),
               TextButton(
                 onPressed: () => Navigator.of(context).pop(true),
                 style: TextButton.styleFrom(foregroundColor: Colors.red),
-                child: const Text('删除'),
+                child: Text(l10n.delete),
               ),
             ],
           ),
@@ -174,7 +177,7 @@ class RecordTile extends StatelessWidget {
           ),
           child: Icon(_iconFor(type), color: color, size: 22),
         ),
-        title: Text(type.label, style: const TextStyle(fontWeight: FontWeight.w600)),
+        title: Text(type.l10n(l10n), style: const TextStyle(fontWeight: FontWeight.w600)),
         subtitle: subtitle.isNotEmpty
             ? Text(subtitle, style: TextStyle(color: Theme.of(context).colorScheme.outline, fontSize: 13))
             : null,

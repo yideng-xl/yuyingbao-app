@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 import '../../../repositories/knowledge_repository.dart';
 
 class KnowledgeCard extends StatelessWidget {
@@ -11,16 +12,16 @@ class KnowledgeCard extends StatelessWidget {
     required this.onTap,
   });
 
-  String _categoryLabel(String category) {
+  String _categoryLabel(String category, S s) {
     switch (category) {
       case 'feeding':
-        return '喂养';
+        return s.knowledgeCategoryFeeding;
       case 'health':
-        return '健康';
+        return s.knowledgeCategoryHealth;
       case 'development':
-        return '发育';
+        return s.knowledgeCategoryDevelopment;
       case 'solid':
-        return '辅食';
+        return s.knowledgeCategorySolid;
       default:
         return category;
     }
@@ -43,7 +44,8 @@ class KnowledgeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final label = _categoryLabel(item.category);
+    final s = S.of(context);
+    final label = _categoryLabel(item.category, s);
     final color = _categoryColor(item.category);
 
     return Card(

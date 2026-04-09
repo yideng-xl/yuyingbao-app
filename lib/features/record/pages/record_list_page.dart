@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../core/database/database_providers.dart';
 import '../../../shared/utils/date_utils.dart';
@@ -49,7 +50,7 @@ class RecordListPage extends HookConsumerWidget {
     }
 
     final isToday = formatDate(selectedDate) == formatDate(DateTime.now());
-    final dateLabel = formatRelativeDate(selectedDate);
+    final dateLabel = formatRelativeDate(selectedDate, S.of(context));
 
     return Scaffold(
       appBar: AppBar(
@@ -58,7 +59,7 @@ class RecordListPage extends HookConsumerWidget {
           IconButton(
             icon: const Icon(Icons.chevron_left),
             onPressed: goToPrevDay,
-            tooltip: '前一天',
+            tooltip: S.of(context).prevDay,
           ),
           TextButton(
             onPressed: pickDate,
@@ -70,7 +71,7 @@ class RecordListPage extends HookConsumerWidget {
           IconButton(
             icon: const Icon(Icons.chevron_right),
             onPressed: isToday ? null : goToNextDay,
-            tooltip: '后一天',
+            tooltip: S.of(context).nextDay,
           ),
         ],
       ),
@@ -78,13 +79,13 @@ class RecordListPage extends HookConsumerWidget {
           ? null
           : FloatingActionButton(
               onPressed: openAddForm,
-              tooltip: '添加记录',
+              tooltip: S.of(context).addRecord,
               child: const Icon(Icons.add),
             ),
       body: baby == null
-          ? const EmptyState(
+          ? EmptyState(
               icon: Icons.child_care,
-              message: '请先添加宝宝信息',
+              message: S.of(context).addBabyFirstInfo,
             )
           : recordsAsync.when(
               loading: () =>
@@ -95,7 +96,7 @@ class RecordListPage extends HookConsumerWidget {
                   return EmptyState(
                     icon: Icons.event_note_outlined,
                     message: '$dateLabel暂无记录',
-                    actionLabel: '添加记录',
+                    actionLabel: S.of(context).addRecord,
                     onAction: openAddForm,
                   );
                 }

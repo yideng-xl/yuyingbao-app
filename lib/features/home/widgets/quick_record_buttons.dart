@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 import '../../../core/constants/enums.dart';
+import '../../../core/l10n/l10n_extensions.dart';
 import '../../../core/theme/app_theme.dart';
 
 class QuickRecordButtons extends ConsumerWidget {
@@ -27,11 +29,16 @@ class QuickRecordButtons extends ConsumerWidget {
       child: Container(
         decoration: AppTheme.clayCard(c),
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: _buttons.map((btn) {
-            return _QuickButton(data: btn, onTap: () => onTap(btn.type));
-          }).toList(),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: _buttons.map((btn) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 6),
+                child: _QuickButton(data: btn, onTap: () => onTap(btn.type)),
+              );
+            }).toList(),
+          ),
         ),
       ),
     );
@@ -53,6 +60,7 @@ class _QuickButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return GestureDetector(
       onTap: onTap,
       child: Column(
@@ -69,11 +77,18 @@ class _QuickButton extends StatelessWidget {
             child: Icon(data.icon, color: data.color, size: 26),
           ),
           const SizedBox(height: 6),
-          Text(
-            data.type.label,
-            style: Theme.of(context).textTheme.labelSmall?.copyWith(
-              color: AppTheme.textMuted,
-              fontWeight: FontWeight.w600,
+          SizedBox(
+            width: 56,
+            child: Text(
+              data.type.l10n(s),
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                color: AppTheme.textMuted,
+                fontWeight: FontWeight.w600,
+                fontSize: 10,
+              ),
             ),
           ),
         ],

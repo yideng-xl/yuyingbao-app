@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../core/constants/enums.dart';
 import '../../../core/database/app_database.dart';
@@ -92,7 +93,7 @@ class BabyFormPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(isEdit ? '编辑宝宝' : '添加宝宝'),
+        title: Text(isEdit ? S.of(context).editBaby : S.of(context).addBaby),
         actions: [
           TextButton(
             onPressed: isSaving.value ? null : save,
@@ -102,7 +103,7 @@ class BabyFormPage extends HookConsumerWidget {
                     height: 16,
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
-                : const Text('保存'),
+                : Text(S.of(context).save),
           ),
         ],
       ),
@@ -114,15 +115,15 @@ class BabyFormPage extends HookConsumerWidget {
             // Name field
             TextFormField(
               controller: nameController,
-              decoration: const InputDecoration(
-                labelText: '宝宝姓名',
-                hintText: '请输入宝宝姓名',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.person_outline),
+              decoration: InputDecoration(
+                labelText: S.of(context).babyName,
+                hintText: S.of(context).babyNameHint,
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.person_outline),
               ),
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
-                  return '请输入宝宝姓名';
+                  return S.of(context).babyNameRequired;
                 }
                 return null;
               },
@@ -135,21 +136,21 @@ class BabyFormPage extends HookConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '性别',
+                  S.of(context).gender,
                   style: Theme.of(context).textTheme.labelLarge,
                 ),
                 const SizedBox(height: 8),
                 SegmentedButton<Gender>(
-                  segments: const [
+                  segments: [
                     ButtonSegment(
                       value: Gender.male,
-                      label: Text('男宝'),
-                      icon: Icon(Icons.male),
+                      label: Text(S.of(context).genderBoy),
+                      icon: const Icon(Icons.male),
                     ),
                     ButtonSegment(
                       value: Gender.female,
-                      label: Text('女宝'),
-                      icon: Icon(Icons.female),
+                      label: Text(S.of(context).genderGirl),
+                      icon: const Icon(Icons.female),
                     ),
                   ],
                   selected: {genderState.value},
@@ -167,11 +168,11 @@ class BabyFormPage extends HookConsumerWidget {
             InkWell(
               onTap: pickDate,
               child: InputDecorator(
-                decoration: const InputDecoration(
-                  labelText: '出生日期',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.calendar_today_outlined),
-                  suffixIcon: Icon(Icons.chevron_right),
+                decoration: InputDecoration(
+                  labelText: S.of(context).birthDate,
+                  border: const OutlineInputBorder(),
+                  prefixIcon: const Icon(Icons.calendar_today_outlined),
+                  suffixIcon: const Icon(Icons.chevron_right),
                 ),
                 child: Text(formatDate(birthDateState.value)),
               ),
@@ -181,11 +182,11 @@ class BabyFormPage extends HookConsumerWidget {
             // Birth height
             TextFormField(
               controller: heightController,
-              decoration: const InputDecoration(
-                labelText: '出生身高 (cm)',
-                hintText: '可选',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.straighten_outlined),
+              decoration: InputDecoration(
+                labelText: S.of(context).birthHeightLabel,
+                hintText: S.of(context).optional,
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.straighten_outlined),
                 suffixText: 'cm',
               ),
               keyboardType:
@@ -193,7 +194,7 @@ class BabyFormPage extends HookConsumerWidget {
               textInputAction: TextInputAction.next,
               validator: (value) {
                 if (value != null && value.isNotEmpty) {
-                  if (double.tryParse(value) == null) return '请输入有效数字';
+                  if (double.tryParse(value) == null) return S.of(context).invalidNumber;
                 }
                 return null;
               },
@@ -203,18 +204,18 @@ class BabyFormPage extends HookConsumerWidget {
             // Birth weight
             TextFormField(
               controller: weightController,
-              decoration: const InputDecoration(
-                labelText: '出生体重 (kg)',
-                hintText: '可选',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.monitor_weight_outlined),
+              decoration: InputDecoration(
+                labelText: S.of(context).birthWeightLabel,
+                hintText: S.of(context).optional,
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.monitor_weight_outlined),
                 suffixText: 'kg',
               ),
               keyboardType:
                   const TextInputType.numberWithOptions(decimal: true),
               validator: (value) {
                 if (value != null && value.isNotEmpty) {
-                  if (double.tryParse(value) == null) return '请输入有效数字';
+                  if (double.tryParse(value) == null) return S.of(context).invalidNumber;
                 }
                 return null;
               },

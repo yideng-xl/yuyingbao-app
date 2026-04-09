@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 import '../../../core/database/app_database.dart';
 import '../../../shared/utils/date_utils.dart';
 
@@ -45,7 +46,7 @@ class BabyCard extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          '$months 个月 · 出生 ${formatDate(baby.birthDate)}',
+          '${S.of(context).monthsAgo(months.toString())} · ${S.of(context).birthPrefix} ${formatDate(baby.birthDate)}',
           style: TextStyle(
             color: isSelected
                 ? colorScheme.onPrimaryContainer.withValues(alpha: 0.75)
@@ -61,23 +62,23 @@ class BabyCard extends StatelessWidget {
             }
           },
           itemBuilder: (context) => [
-            const PopupMenuItem(
+            PopupMenuItem(
               value: 'edit',
               child: Row(
                 children: [
-                  Icon(Icons.edit_outlined),
-                  SizedBox(width: 8),
-                  Text('编辑'),
+                  const Icon(Icons.edit_outlined),
+                  const SizedBox(width: 8),
+                  Text(S.of(context).edit),
                 ],
               ),
             ),
-            const PopupMenuItem(
+            PopupMenuItem(
               value: 'delete',
               child: Row(
                 children: [
-                  Icon(Icons.delete_outline, color: Colors.red),
-                  SizedBox(width: 8),
-                  Text('删除', style: TextStyle(color: Colors.red)),
+                  const Icon(Icons.delete_outline, color: Colors.red),
+                  const SizedBox(width: 8),
+                  Text(S.of(context).delete, style: const TextStyle(color: Colors.red)),
                 ],
               ),
             ),

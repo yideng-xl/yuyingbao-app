@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 import '../../../core/database/app_database.dart';
 import '../providers/baby_providers.dart';
 import '../widgets/baby_card.dart';
@@ -16,7 +17,7 @@ class BabyListPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('宝宝管理'),
+        title: Text(S.of(context).babyManagement),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -31,24 +32,24 @@ class BabyListPage extends ConsumerWidget {
       body: babiesAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, _) => Center(
-          child: Text('加载失败: $error'),
+          child: Text(S.of(context).recordLoadFailed(error.toString())),
         ),
         data: (babies) {
           if (babies.isEmpty) {
-            return const Center(
+            return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.child_care, size: 64, color: Colors.grey),
-                  SizedBox(height: 16),
+                  const Icon(Icons.child_care, size: 64, color: Colors.grey),
+                  const SizedBox(height: 16),
                   Text(
-                    '还没有宝宝信息',
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                    S.of(context).noBabyInfo,
+                    style: const TextStyle(fontSize: 16, color: Colors.grey),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
-                    '点击右下角 + 添加宝宝',
-                    style: TextStyle(color: Colors.grey),
+                    S.of(context).tapToAddBaby,
+                    style: const TextStyle(color: Colors.grey),
                   ),
                 ],
               ),
@@ -93,17 +94,17 @@ class BabyListPage extends ConsumerWidget {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('删除宝宝'),
-        content: Text('确定要删除「${baby.name}」的所有信息吗？此操作不可恢复。'),
+        title: Text(S.of(context).deleteBaby),
+        content: Text(S.of(context).confirmDeleteBaby(baby.name)),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('取消'),
+            child: Text(S.of(context).cancel),
           ),
           TextButton(
             onPressed: () => Navigator.of(context).pop(true),
             style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: const Text('删除'),
+            child: Text(S.of(context).delete),
           ),
         ],
       ),

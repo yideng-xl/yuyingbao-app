@@ -1,0 +1,211 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "YuyingBao",
+
+  "navHome": "Home",
+  "navRecords": "Records",
+  "navStatistics": "Stats",
+  "navKnowledge": "Knowledge",
+  "navSettings": "Settings",
+
+  "switchBaby": "Switch Baby",
+
+  "todayOverview": "Today's Overview",
+  "feedingCount": "Feedings",
+  "feedingCountUnit": "times",
+  "milkVolume": "Milk",
+  "diaperCount": "Diapers",
+  "diaperCountUnit": "times",
+  "waterVolume": "Water",
+  "recentRecords": "Recent Records",
+  "noRecordsYet": "No records yet, start adding!",
+  "noBabyYet": "No baby added yet, please add a baby first",
+  "addRecord": "Add Record",
+  "addBabyFirst": "Please add a baby first",
+  "addBabyFirstInfo": "Please add baby info first",
+
+  "recordTypeBreastfeeding": "Breastfeeding",
+  "recordTypeBottle": "Bottle Feed",
+  "recordTypeFormula": "Formula",
+  "recordTypeSolid": "Solid Food",
+  "recordTypeDiaper": "Diaper",
+  "recordTypeGrowth": "Growth",
+  "recordTypeWater": "Water",
+  "recordTypeNutrition": "Supplement",
+
+  "breastfeedingSideLeft": "Left",
+  "breastfeedingSideRight": "Right",
+  "breastfeedingSideBoth": "Both",
+
+  "solidTypeRiceCereal": "Rice Cereal",
+  "solidTypeVegetablePuree": "Veggie Puree",
+  "solidTypeFruitPuree": "Fruit Puree",
+  "solidTypeMeatPuree": "Meat Puree",
+  "solidTypeEggYolk": "Egg Yolk",
+  "solidTypeOther": "Other",
+
+  "diaperTextureWatery": "Watery",
+  "diaperTextureSoft": "Soft",
+  "diaperTextureNormal": "Normal",
+  "diaperTextureHard": "Hard",
+
+  "diaperColorYellow": "Yellow",
+  "diaperColorGreen": "Green",
+  "diaperColorBrown": "Brown",
+  "diaperColorBlack": "Black",
+
+  "genderMale": "Male",
+  "genderFemale": "Female",
+  "genderBoy": "Boy",
+  "genderGirl": "Girl",
+
+  "skinWarmPink": "Warm Pink",
+  "skinWarmPinkDesc": "Sweet and warm pink tone",
+  "skinOceanBlue": "Ocean Blue",
+  "skinOceanBlueDesc": "Clean and calm blue",
+  "skinNatureGreen": "Nature Green",
+  "skinNatureGreenDesc": "Fresh and natural green",
+  "skinSunnyOrange": "Sunny Orange",
+  "skinSunnyOrangeDesc": "Energetic and warm orange",
+
+  "today": "Today",
+  "yesterday": "Yesterday",
+  "dayBeforeYesterday": "2 days ago",
+
+  "edit": "Edit",
+  "delete": "Delete",
+  "save": "Save",
+  "cancel": "Cancel",
+
+  "recordType": "Record Type",
+  "time": "Time",
+  "noteOptional": "Note (optional)",
+  "breastfeedingSide": "Feeding Side",
+  "durationMinutes": "Duration (min)",
+  "solidType": "Solid Food Type",
+  "ingredientOptional": "Ingredients (optional)",
+  "texture": "Texture",
+  "color": "Color",
+  "hasUrine": "Has Urine",
+  "hasUrineText": "Wet",
+  "nutritionType": "Supplement Type",
+
+  "babyManagement": "Baby Management",
+  "noBabyInfo": "No baby info yet",
+  "deleteBaby": "Delete Baby",
+  "deleteBabyConfirm": "Are you sure you want to delete all info for \"{name}\"? This cannot be undone.",
+  "editBaby": "Edit Baby",
+  "addBaby": "Add Baby",
+  "babyName": "Baby Name",
+  "babyNameHint": "Enter baby's name",
+  "babyNameRequired": "Please enter baby's name",
+  "gender": "Gender",
+  "birthDate": "Birth Date",
+  "optional": "Optional",
+  "invalidNumber": "Please enter a valid number",
+
+  "sectionTheme": "Theme",
+  "sectionBabyManagement": "Baby Management",
+  "sectionAbout": "About",
+  "addBabyHint": "Tap + to add a baby",
+  "appName": "YuyingBao",
+  "version": "Version {version}",
+  "openSource": "Source Code",
+
+  "feedingVolumeTitle": "Feeding Volume (ml)",
+  "whoWeightTitle": "WHO Weight Curve (kg)",
+  "whoHeightTitle": "WHO Height Curve (cm)",
+  "diaperCountTitle": "Diaper Changes",
+  "weight": "Weight",
+  "height": "Height",
+  "noReferenceData": "No reference data",
+  "noFeedingData": "No feeding data",
+  "noDiaperData": "No diaper data",
+  "baby": "Baby",
+  "loadError": "Load failed: {error}",
+  "monthLabel": "{month}m",
+
+  "timeRangeToday": "Today",
+  "timeRangeWeek": "7 Days",
+  "timeRangeMonth": "30 Days",
+
+  "prevDay": "Previous day",
+  "nextDay": "Next day",
+  "confirmDelete": "Confirm Delete",
+  "confirmDeleteRecord": "Are you sure you want to delete this record? This cannot be undone.",
+
+  "knowledgeTitle": "Knowledge Base",
+  "knowledgeAll": "All",
+  "knowledgeCategoryFeeding": "Feeding",
+  "knowledgeCategoryHealth": "Health",
+  "knowledgeCategoryDevelopment": "Development",
+  "knowledgeCategorySolid": "Solid Food",
+  "noArticles": "No articles found",
+
+  "feedingReminder": "Feeding Reminder",
+  "feedingReminderDesc": "Set a fixed interval feeding reminder",
+  "feedingReminderEnabled": "Enable Reminder",
+  "feedingIntervalHours": "Interval (hours)",
+  "feedingReminderNotification": "Time to feed the baby!",
+  "feedingReminderTitle": "Feeding Reminder",
+
+  "sectionLanguage": "Language",
+  "languageFollowSystem": "System",
+  "language": "Language",
+  "languageZh": "中文",
+  "languageEn": "English",
+  "languageJa": "日本語",
+  "languageKo": "한국어",
+
+  "birthHeightLabel": "Birth Height (cm)",
+  "birthWeightLabel": "Birth Weight (kg)",
+  "birthPrefix": "Born",
+  "monthsAgo": "{months} months",
+  "@monthsAgo": {
+    "placeholders": {
+      "months": { "type": "String" }
+    }
+  },
+  "saveFailed": "Save failed",
+  "loadFailure": "Load failed",
+  "tapToAddBaby": "Tap + to add a baby",
+  "confirmDeleteBaby": "Are you sure you want to delete all info for \"{name}\"? This cannot be undone.",
+  "@confirmDeleteBaby": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+
+  "searchArticles": "Search articles...",
+  "ageRange0To6": "0-6 months",
+  "ageRange6To12": "6-12 months",
+  "ageRange12To24": "12-24 months",
+  "amountMl": "Amount (ml)",
+  "heightCm": "Height (cm)",
+  "weightKg": "Weight (kg)",
+  "durationMinutes": "Duration (min)",
+  "recordLoadFailed": "Failed to load: {error}",
+  "@recordLoadFailed": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  },
+  "timesPerDay": "{count} times",
+  "@timesPerDay": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "diaperChangesCount": "{count} diaper changes",
+  "@diaperChangesCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "durationMinutesUnit": "min",
+  "amountMlUnit": "ml",
+  "heightCmUnit": "cm",
+  "weightKgUnit": "kg",
+  "deleteRecordConfirm": "Are you sure you want to delete this {recordType} record?"
+}

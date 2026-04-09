@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/knowledge_providers.dart';
 import '../widgets/knowledge_card.dart';
@@ -14,12 +15,19 @@ class KnowledgeListPage extends ConsumerStatefulWidget {
 class _KnowledgeListPageState extends ConsumerState<KnowledgeListPage> {
   final _searchController = TextEditingController();
 
-  static const _ageRanges = [
-    ('全部', null),
-    ('0-6月', '0-6'),
-    ('6-12月', '6-12'),
-    ('12-24月', '12-24'),
-  ];
+  List<(String, String?)> _ageRanges = [];
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final s = S.of(context);
+    _ageRanges = [
+      (s.knowledgeAll, null),
+      (s.ageRange0To6, '0-6'),
+      (s.ageRange6To12, '6-12'),
+      (s.ageRange12To24, '12-24'),
+    ];
+  }
 
   @override
   void dispose() {
@@ -29,12 +37,13 @@ class _KnowledgeListPageState extends ConsumerState<KnowledgeListPage> {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     final selectedAgeRange = ref.watch(selectedAgeRangeProvider);
     final knowledgeAsync = ref.watch(knowledgeListProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('育儿知识'),
+        title: Text(s.knowledgeTitle),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(56),
           child: Padding(
@@ -42,7 +51,7 @@ class _KnowledgeListPageState extends ConsumerState<KnowledgeListPage> {
             child: TextField(
               controller: _searchController,
               decoration: InputDecoration(
-                hintText: '搜索文章...',
+                hintText: s.searchArticles,
                 prefixIcon: const Icon(Icons.search),
                 suffixIcon: _searchController.text.isNotEmpty
                     ? IconButton(
@@ -97,7 +106,7 @@ class _KnowledgeListPageState extends ConsumerState<KnowledgeListPage> {
             child: knowledgeAsync.when(
               data: (items) {
                 if (items.isEmpty) {
-                  return const Center(child: Text('暂无相关文章'));
+                  return Center(child: Text(s.noArticles));
                 }
                 return ListView.builder(
                   itemCount: items.length,
@@ -118,7 +127,7 @@ class _KnowledgeListPageState extends ConsumerState<KnowledgeListPage> {
                 );
               },
               loading: () => const Center(child: CircularProgressIndicator()),
-              error: (e, _) => Center(child: Text('加载失败：$e')),
+              error: (e, _) => Center(child: Text(s.recordLoadFailed(e.toString()))),
             ),
           ),
         ],

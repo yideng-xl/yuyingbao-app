@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../core/constants/enums.dart';
+import '../../../core/l10n/l10n_extensions.dart';
 import '../providers/record_providers.dart';
 
 /// Full-screen page for adding a record. Push via Navigator.
@@ -106,7 +108,7 @@ class RecordFormSheet extends HookConsumerWidget {
       } catch (e) {
         if (context.mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('保存失败: $e')),
+            SnackBar(content: Text('${S.of(context).saveFailed}: $e')),
           );
         }
       } finally {
@@ -116,7 +118,7 @@ class RecordFormSheet extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('添加记录'),
+        title: Text(S.of(context).addRecord),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8),
@@ -127,7 +129,7 @@ class RecordFormSheet extends HookConsumerWidget {
                       width: 16, height: 16,
                       child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                     )
-                  : const Text('保存'),
+                  : Text(S.of(context).save),
             ),
           ),
         ],
@@ -136,14 +138,14 @@ class RecordFormSheet extends HookConsumerWidget {
         padding: const EdgeInsets.all(20),
         children: [
           // Record type chips
-          Text('记录类型', style: Theme.of(context).textTheme.labelLarge),
+          Text(S.of(context).recordType, style: Theme.of(context).textTheme.labelLarge),
           const SizedBox(height: 8),
           Wrap(
             spacing: 8,
             runSpacing: 8,
             children: RecordType.values.map((type) {
               return ChoiceChip(
-                label: Text(type.label),
+                label: Text(type.l10n(S.of(context))),
                 selected: selectedType.value == type,
                 onSelected: (selected) {
                   if (selected) selectedType.value = type;
@@ -157,7 +159,7 @@ class RecordFormSheet extends HookConsumerWidget {
           ListTile(
             contentPadding: EdgeInsets.zero,
             leading: const Icon(Icons.access_time),
-            title: const Text('时间'),
+            title: Text(S.of(context).time),
             trailing: Text(
               TimeOfDay.fromDateTime(selectedTime.value).format(context),
               style: Theme.of(context).textTheme.bodyLarge,
@@ -189,10 +191,10 @@ class RecordFormSheet extends HookConsumerWidget {
           // Note field
           TextField(
             controller: noteController,
-            decoration: const InputDecoration(
-              labelText: '备注（可选）',
-              border: OutlineInputBorder(),
-              prefixIcon: Icon(Icons.notes),
+            decoration: InputDecoration(
+              labelText: S.of(context).noteOptional,
+              border: const OutlineInputBorder(),
+              prefixIcon: const Icon(Icons.notes),
             ),
             maxLines: 2,
           ),
@@ -222,13 +224,13 @@ class RecordFormSheet extends HookConsumerWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('喂奶侧', style: Theme.of(context).textTheme.labelLarge),
+            Text(S.of(context).breastfeedingSide, style: Theme.of(context).textTheme.labelLarge),
             const SizedBox(height: 8),
             Wrap(
               spacing: 8,
               children: BreastfeedingSide.values.map((side) {
                 return ChoiceChip(
-                  label: Text(side.label),
+                  label: Text(side.l10n(S.of(context))),
                   selected: bfSide.value == side,
                   onSelected: (selected) {
                     if (selected) bfSide.value = side;
@@ -240,10 +242,10 @@ class RecordFormSheet extends HookConsumerWidget {
             TextField(
               controller: durationController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: '时长（分钟）',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.timer_outlined),
+              decoration: InputDecoration(
+                labelText: S.of(context).durationMinutes,
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.timer_outlined),
               ),
             ),
             const SizedBox(height: 12),
@@ -259,10 +261,10 @@ class RecordFormSheet extends HookConsumerWidget {
             TextField(
               controller: amountController,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
-              decoration: const InputDecoration(
-                labelText: '量（ml）',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.local_drink_outlined),
+              decoration: InputDecoration(
+                labelText: S.of(context).amountMl,
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.local_drink_outlined),
               ),
             ),
             const SizedBox(height: 12),
@@ -273,14 +275,14 @@ class RecordFormSheet extends HookConsumerWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('辅食类型', style: Theme.of(context).textTheme.labelLarge),
+            Text(S.of(context).solidType, style: Theme.of(context).textTheme.labelLarge),
             const SizedBox(height: 8),
             Wrap(
               spacing: 8,
               runSpacing: 8,
               children: SolidType.values.map((st) {
                 return ChoiceChip(
-                  label: Text(st.label),
+                  label: Text(st.l10n(S.of(context))),
                   selected: solidType.value == st,
                   onSelected: (selected) {
                     if (selected) solidType.value = st;
@@ -291,10 +293,10 @@ class RecordFormSheet extends HookConsumerWidget {
             const SizedBox(height: 16),
             TextField(
               controller: solidIngredientsController,
-              decoration: const InputDecoration(
-                labelText: '食材（可选）',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.list_alt_outlined),
+              decoration: InputDecoration(
+                labelText: S.of(context).ingredientOptional,
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.list_alt_outlined),
               ),
             ),
             const SizedBox(height: 12),
@@ -305,13 +307,13 @@ class RecordFormSheet extends HookConsumerWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('质地', style: Theme.of(context).textTheme.labelLarge),
+            Text(S.of(context).texture, style: Theme.of(context).textTheme.labelLarge),
             const SizedBox(height: 8),
             Wrap(
               spacing: 8,
               children: DiaperTexture.values.map((tex) {
                 return ChoiceChip(
-                  label: Text(tex.label),
+                  label: Text(tex.l10n(S.of(context))),
                   selected: diaperTexture.value == tex,
                   onSelected: (selected) {
                     if (selected) diaperTexture.value = tex;
@@ -320,13 +322,13 @@ class RecordFormSheet extends HookConsumerWidget {
               }).toList(),
             ),
             const SizedBox(height: 16),
-            Text('颜色', style: Theme.of(context).textTheme.labelLarge),
+            Text(S.of(context).color, style: Theme.of(context).textTheme.labelLarge),
             const SizedBox(height: 8),
             Wrap(
               spacing: 8,
               children: DiaperColor.values.map((col) {
                 return ChoiceChip(
-                  label: Text(col.label),
+                  label: Text(col.l10n(S.of(context))),
                   selected: diaperColor.value == col,
                   onSelected: (selected) {
                     if (selected) diaperColor.value = col;
@@ -337,7 +339,7 @@ class RecordFormSheet extends HookConsumerWidget {
             const SizedBox(height: 12),
             SwitchListTile(
               contentPadding: EdgeInsets.zero,
-              title: const Text('有尿'),
+              title: Text(S.of(context).hasUrine),
               value: hasUrine.value,
               onChanged: (v) => hasUrine.value = v,
             ),
@@ -352,20 +354,20 @@ class RecordFormSheet extends HookConsumerWidget {
             TextField(
               controller: heightController,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
-              decoration: const InputDecoration(
-                labelText: '身高（cm）',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.height),
+              decoration: InputDecoration(
+                labelText: S.of(context).heightCm,
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.height),
               ),
             ),
             const SizedBox(height: 16),
             TextField(
               controller: weightController,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
-              decoration: const InputDecoration(
-                labelText: '体重（kg）',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.monitor_weight_outlined),
+              decoration: InputDecoration(
+                labelText: S.of(context).weightKg,
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.monitor_weight_outlined),
               ),
             ),
             const SizedBox(height: 12),
@@ -378,10 +380,10 @@ class RecordFormSheet extends HookConsumerWidget {
           children: [
             TextField(
               controller: nutritionController,
-              decoration: const InputDecoration(
-                labelText: '营养品类型',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.medication_outlined),
+              decoration: InputDecoration(
+                labelText: S.of(context).nutritionType,
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.medication_outlined),
                 hintText: '例：维生素D、DHA',
               ),
             ),

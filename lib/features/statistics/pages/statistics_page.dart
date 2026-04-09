@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/l10n/l10n_extensions.dart';
 import '../../../features/baby/providers/baby_providers.dart';
 import '../../../services/statistics_service.dart';
 import '../../../shared/widgets/baby_switcher.dart';
@@ -15,12 +17,13 @@ class StatisticsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baby = ref.watch(selectedBabyProvider);
+    final s = S.of(context);
 
     if (baby == null) {
-      return const Scaffold(
+      return Scaffold(
         body: EmptyState(
           icon: Icons.bar_chart_outlined,
-          message: '请先添加宝宝',
+          message: s.addBabyFirst,
         ),
       );
     }
@@ -31,6 +34,7 @@ class StatisticsPage extends ConsumerWidget {
 
     final whoWeightAsync = ref.watch(whoWeightDataProvider(gender));
     final whoHeightAsync = ref.watch(whoHeightDataProvider(gender));
+    final allRecordsAsync = ref.watch(allGrowthRecordsProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -45,7 +49,7 @@ class StatisticsPage extends ConsumerWidget {
             Center(
               child: SegmentedButton<StatsTimeRange>(
                 segments: StatsTimeRange.values
-                    .map((r) => ButtonSegment(value: r, label: Text(r.label)))
+                    .map((r) => ButtonSegment(value: r, label: Text(r.l10n(s))))
                     .toList(),
                 selected: {timeRange},
                 onSelectionChanged: (selected) {
@@ -57,7 +61,7 @@ class StatisticsPage extends ConsumerWidget {
 
             // Feeding chart
             _SectionCard(
-              title: '喂养量（ml）',
+              title: s.feedingVolumeTitle,
               child: recordsAsync.when(
                 data: (records) {
                   final totals =
@@ -73,13 +77,13 @@ class StatisticsPage extends ConsumerWidget {
 
             // Growth curve – weight
             _SectionCard(
-              title: 'WHO 体重曲线（kg）',
+              title: s.whoWeightTitle,
               child: whoWeightAsync.when(
                 data: (whoData) {
-                  final babyWeightData =
-                      recordsAsync.valueOrNull ?? <dynamic>[];
+                  final allRecords =
+                      allRecordsAsync.valueOrNull ?? <dynamic>[];
                   final weightPoints = _buildGrowthPoints(
-                    records: babyWeightData.cast(),
+                    records: allRecords.cast(),
                     type: 'growth',
                     valueExtractor: (r) => r.weightKg,
                     birthDate: baby.birthDate,
@@ -88,7 +92,7 @@ class StatisticsPage extends ConsumerWidget {
                     whoData: whoData,
                     babyData: weightPoints,
                     yLabel: 'kg',
-                    title: '体重',
+                    title: s.weight,
                   );
                 },
                 loading: () =>
@@ -100,13 +104,13 @@ class StatisticsPage extends ConsumerWidget {
 
             // Growth curve – height
             _SectionCard(
-              title: 'WHO 身高曲线（cm）',
+              title: s.whoHeightTitle,
               child: whoHeightAsync.when(
                 data: (whoData) {
-                  final babyHeightData =
-                      recordsAsync.valueOrNull ?? <dynamic>[];
+                  final allRecords =
+                      allRecordsAsync.valueOrNull ?? <dynamic>[];
                   final heightPoints = _buildGrowthPoints(
-                    records: babyHeightData.cast(),
+                    records: allRecords.cast(),
                     type: 'growth',
                     valueExtractor: (r) => r.heightCm,
                     birthDate: baby.birthDate,
@@ -115,7 +119,7 @@ class StatisticsPage extends ConsumerWidget {
                     whoData: whoData,
                     babyData: heightPoints,
                     yLabel: 'cm',
-                    title: '身高',
+                    title: s.height,
                   );
                 },
                 loading: () =>
@@ -127,7 +131,7 @@ class StatisticsPage extends ConsumerWidget {
 
             // Diaper chart
             _SectionCard(
-              title: '换尿布次数',
+              title: s.diaperCountTitle,
               child: recordsAsync.when(
                 data: (records) => DiaperChart(records: records),
                 loading: () =>
@@ -207,10 +211,11 @@ class _ErrorText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Text(
-        '加载失败: $error',
+        s.loadError(error.toString()),
         style: TextStyle(color: Theme.of(context).colorScheme.error),
       ),
     );

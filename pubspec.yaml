@@ -1,7 +1,7 @@
 name: yuyingbao
 description: 育婴宝 - Baby care tracking app with local storage
 publish_to: 'none'
-version: 0.5.0+1
+version: 0.6.0+1
 
 environment:
   sdk: ^3.5.0
@@ -33,9 +33,13 @@ dependencies:
 
   # Notifications
   flutter_local_notifications: ^18.0.1
+  timezone: ^0.10.0
 
   # Theme
   flex_color_scheme: ^8.1.0
+
+  # Markdown
+  flutter_markdown: ^0.7.6
 
   # Utils
   intl: ^0.20.0
@@ -57,6 +61,7 @@ dev_dependencies:
   mockito: ^5.4.5
 
 flutter:
+  generate: true
   uses-material-design: true
   assets:
     - assets/who/

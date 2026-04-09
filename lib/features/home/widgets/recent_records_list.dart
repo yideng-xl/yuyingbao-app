@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 import '../../record/providers/record_providers.dart';
 import '../../record/widgets/record_tile.dart';
 import '../../../core/database/database_providers.dart';
@@ -15,12 +16,12 @@ class RecentRecordsList extends ConsumerWidget {
     return recordsAsync.when(
       data: (records) {
         if (records.isEmpty) {
-          return const SliverToBoxAdapter(
+          return SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 48),
               child: EmptyState(
                 icon: Icons.note_alt_outlined,
-                message: '还没有记录，快去添加吧',
+                message: S.of(context).noRecordsYet,
               ),
             ),
           );
@@ -53,7 +54,7 @@ class RecentRecordsList extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(vertical: 48),
           child: EmptyState(
             icon: Icons.error_outline,
-            message: '加载失败: $error',
+            message: S.of(context).recordLoadFailed(error.toString()),
           ),
         ),
       ),

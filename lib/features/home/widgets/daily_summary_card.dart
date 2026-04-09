@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:yuyingbao/l10n/generated/app_localizations.dart';
 import '../../../core/theme/app_theme.dart';
 import '../providers/home_providers.dart';
 
@@ -23,7 +24,7 @@ class DailySummaryCard extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.only(left: 4, bottom: 12),
               child: Text(
-                '今日概览',
+                S.of(context).todayOverview,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                   fontWeight: FontWeight.w700,
                   color: AppTheme.textMuted,
@@ -37,29 +38,29 @@ class DailySummaryCard extends ConsumerWidget {
                   icon: Icons.local_drink_rounded,
                   color: AppTheme.bottleColor,
                   value: summary.feedingCount.toString(),
-                  unit: '次',
-                  label: '喂奶',
+                  unit: S.of(context).feedingCountUnit,
+                  label: S.of(context).feedingCount,
                 ),
                 _SummaryItem(
                   icon: Icons.opacity_rounded,
                   color: AppTheme.breastfeedingColor,
                   value: '${summary.totalMilkMl.toStringAsFixed(0)}',
                   unit: 'ml',
-                  label: '奶量',
+                  label: S.of(context).milkVolume,
                 ),
                 _SummaryItem(
                   icon: Icons.baby_changing_station_rounded,
                   color: AppTheme.diaperColor,
                   value: summary.diaperCount.toString(),
-                  unit: '次',
-                  label: '换尿布',
+                  unit: S.of(context).diaperCountUnit,
+                  label: S.of(context).diaperCount,
                 ),
                 _SummaryItem(
                   icon: Icons.water_drop_rounded,
                   color: AppTheme.waterColor,
                   value: '${summary.waterMl.toStringAsFixed(0)}',
                   unit: 'ml',
-                  label: '饮水',
+                  label: S.of(context).waterVolume,
                 ),
               ],
             ),

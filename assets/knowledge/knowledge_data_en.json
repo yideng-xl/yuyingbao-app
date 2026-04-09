@@ -1,0 +1,50 @@
+[
+  {
+    "id": "k001",
+    "ageRange": "0-6",
+    "category": "feeding",
+    "title": "Newborn Breastfeeding Guide",
+    "content": "Breastfeeding should start as soon as possible after birth, ideally within 1 hour of delivery.\n\n## Feeding Frequency\n- Newborns need 8-12 feedings per day\n- Feed on demand, no need for strict schedules\n- Each feeding session lasts approximately 15-20 minutes\n\n## Signs Your Baby Is Getting Enough\n- 6 or more wet diapers per day\n- Stools transition from black meconium to yellow\n- Baby appears satisfied after feeding\n- Steady weight gain\n\n## Common Issues\n- Sore nipples: Adjust latch position\n- Insufficient milk supply: Increase feeding frequency and ensure adequate rest",
+    "sortOrder": 1
+  },
+  {
+    "id": "k002",
+    "ageRange": "0-6",
+    "category": "feeding",
+    "title": "Formula Feeding Essentials",
+    "content": "If breastfeeding is not possible, infant formula is a safe alternative.\n\n## Preparation Method\n- Add water first, then formula powder\n- Follow the ratio on the package instructions, don't improvise with concentration\n- Use water at 40-50°C temperature\n- Gently shake to mix, avoiding excessive bubbles\n\n## Feeding Amount Reference\n- Newborn: 60-90ml per feeding\n- 1-2 months: 90-120ml per feeding\n- 3-4 months: 120-180ml per feeding\n- 5-6 months: 180-240ml per feeding\n\n## Important Notes\n- Finish prepared formula within 2 hours at room temperature\n- Do not reheat leftover formula\n- Thoroughly wash and sterilize bottles after each use",
+    "sortOrder": 2
+  },
+  {
+    "id": "k003",
+    "ageRange": "0-6",
+    "category": "health",
+    "title": "Newborn Jaundice Monitoring",
+    "content": "Most newborns develop physiological jaundice, typically appearing 2-3 days after birth.\n\n## Physiological Jaundice\n- Appears 2-3 days after birth\n- Peaks at 4-5 days\n- Resolves naturally by 7-14 days\n- Baby appears alert and feeds normally\n\n## When to Seek Medical Attention\n- Jaundice appears within 24 hours of birth\n- Jaundice persists beyond 2 weeks\n- Yellowing extends to palms and soles\n- Accompanied by fever, poor feeding, or excessive sleepiness\n- Pale or grayish stools",
+    "sortOrder": 3
+  },
+  {
+    "id": "k004",
+    "ageRange": "6-12",
+    "category": "solid",
+    "title": "Solid Food Introduction Guide",
+    "content": "The World Health Organization recommends starting solids when your baby reaches 6 months old.\n\n## Principles for Introducing Solids\n- Start with single-ingredient foods\n- Progress from thin to thick, fine to coarse textures\n- Introduce only one new food at a time\n- Observe for 3-5 days before introducing another food to watch for allergies\n\n## Recommended for 6-8 Months\n- Iron-fortified rice cereal (preferred first food)\n- Vegetable purees: pumpkin, potato, carrot\n- Fruit purees: apple, banana, pear\n- Small amounts of egg yolk (start with 1/4)\n\n## Recommended for 8-10 Months\n- Minced meat and fish\n- Soft pasta and porridge\n- Finger foods: steamed vegetable strips\n\n## Important Reminders\n- No salt, sugar, or honey before age 1\n- Avoid choking hazards like whole nuts\n- Solids do not replace milk; breast milk or formula remains the primary nutrition source",
+    "sortOrder": 4
+  },
+  {
+    "id": "k005",
+    "ageRange": "6-12",
+    "category": "development",
+    "title": "6-12 Month Developmental Milestones",
+    "content": "Every baby develops at their own pace; the following are general references.\n\n## Gross Motor Skills\n- 6 months: Can sit with support\n- 7-8 months: Sits independently\n- 8-9 months: Begins crawling\n- 10-12 months: Pulls to stand, cruises along furniture\n\n## Fine Motor Skills\n- 6-7 months: Grasps with both hands\n- 8-9 months: Pincer grasp with thumb and forefinger\n- 10-12 months: Drinks from a cup\n\n## Language\n- 6-8 months: Produces syllables like ba-ba, ma-ma\n- 9-12 months: Understands simple commands (like \"wave bye-bye\")\n\n## When to Be Concerned\n- Cannot sit by 9 months\n- No vocalizations by 12 months\n- No response to sounds\nIf you have concerns, consult your pediatrician",
+    "sortOrder": 5
+  },
+  {
+    "id": "k006",
+    "ageRange": "12-24",
+    "category": "feeding",
+    "title": "1-2 Year Diet Transition",
+    "content": "After age 1, babies gradually transition from milk-based to food-based nutrition.\n\n## Meal Structure\n- 3 main meals + 2 snacks per day\n- Maintain 400-500ml of milk daily\n- Foods progressively resemble adult diet (but softer and finer)\n\n## Nutrition Highlights\n- Ensure adequate iron intake (red meat, liver)\n- One egg per day\n- Adequate vegetables and fruits\n- Variety of grains (rice, noodles, steamed buns)\n\n## Important Notes\n- Small amounts of salt can be added (not exceeding 1g per day)\n- Avoid high-sugar snacks and sugary beverages\n- Encourage self-feeding\n- Eat together as a family to create a positive eating environment",
+    "sortOrder": 6
+  }
+]
