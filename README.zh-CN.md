@@ -6,7 +6,7 @@
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)
 [![Version](https://img.shields.io/badge/version-0.6.0-EC4899)](https://github.com/yideng-xl/yuyingbao-app/releases)
 
-[English](./README.md) | 中文
+[English](./README.md) | 中文 | [日本語](./README.ja.md) | [한국어](./README.ko.md)
 
 基于 Flutter 的本地优先婴儿护理记录应用 — 无云端、无账号，数据完全掌控在自己手中。
 

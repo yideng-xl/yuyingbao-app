@@ -6,7 +6,7 @@
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)
 [![Version](https://img.shields.io/badge/version-0.6.0-EC4899)](https://github.com/yideng-xl/yuyingbao-app/releases)
 
-[中文](./README.zh-CN.md) | English
+[中文](./README.zh-CN.md) | English | [日本語](./README.ja.md) | [한국어](./README.ko.md)
 
 A local-first baby care tracking app built with Flutter — no cloud, no account, just your data.
 
