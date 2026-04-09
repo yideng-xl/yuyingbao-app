@@ -164,17 +164,33 @@ class RecordTile extends StatelessWidget {
       onDismissed: (_) => onDelete(),
       child: ListTile(
         onTap: onTap,
-        leading: CircleAvatar(
-          backgroundColor: color.withValues(alpha: 0.15),
+        leading: Container(
+          width: 44,
+          height: 44,
+          decoration: BoxDecoration(
+            color: color.withValues(alpha: 0.12),
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(color: color.withValues(alpha: 0.2), width: 1.5),
+          ),
           child: Icon(_iconFor(type), color: color, size: 22),
         ),
-        title: Text(type.label),
-        subtitle: subtitle.isNotEmpty ? Text(subtitle) : null,
-        trailing: Text(
-          formatTime(record.happenedAt),
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Theme.of(context).colorScheme.outline,
-              ),
+        title: Text(type.label, style: const TextStyle(fontWeight: FontWeight.w600)),
+        subtitle: subtitle.isNotEmpty
+            ? Text(subtitle, style: TextStyle(color: Theme.of(context).colorScheme.outline, fontSize: 13))
+            : null,
+        trailing: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Text(
+            formatTime(record.happenedAt),
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: Theme.of(context).colorScheme.outline,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
       ),
     );

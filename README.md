@@ -4,6 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)
+[![Version](https://img.shields.io/badge/version-0.5.0-EC4899)](https://github.com/yideng-xl/yuyingbao-app/releases)
 
 [中文](./README.zh-CN.md) | English
 
@@ -21,14 +22,15 @@ A local-first baby care tracking app built with Flutter — no cloud, no account
 
 ## Features
 
-- **Multi-baby support** — manage profiles for multiple babies in one app
+- **Multi-baby support** — manage profiles for multiple babies, switch instantly from any page
 - **8 record types** — breastfeeding, bottle feeding, formula, solid food, diaper, growth, water, and nutrition
-- **Today overview** — daily summary dashboard at a glance
-- **Quick record** — one-tap buttons for the most frequent actions
+- **Today overview** — daily summary dashboard with feeding count, milk volume, diaper changes, and water intake
+- **Quick record** — one-tap buttons for the most frequent actions, full-screen form for easy input
 - **Statistics** — bar and line charts for feeding and growth trends
-- **WHO growth curves** — 0–24 months, P3 / P15 / P50 / P85 / P97 percentile lines
-- **Knowledge base** — age-appropriate baby care articles
-- **Data export / import** — full JSON backup and restore
+- **WHO growth curves** — 0-24 months, P3 / P15 / P50 / P85 / P97 percentile lines
+- **Knowledge base** — age-appropriate baby care articles with search and age filter
+- **4 theme skins** — Warm Pink, Ocean Blue, Nature Green, Sunny Orange — switch instantly in settings
+- **Claymorphism UI** — soft 3D, rounded corners, gentle shadows for a warm and friendly feel
 - **100% local** — no cloud, no account, no data leaves your device
 - **Cross-platform** — iOS and Android
 
@@ -38,7 +40,7 @@ A local-first baby care tracking app built with Flutter — no cloud, no account
 
 | Layer | Technology |
 |---|---|
-| UI Framework | Flutter |
+| UI Framework | Flutter 3.x |
 | State Management | Riverpod + flutter_hooks |
 | Local Database | drift (SQLite) |
 | Navigation | go_router |
@@ -47,12 +49,23 @@ A local-first baby care tracking app built with Flutter — no cloud, no account
 
 ---
 
+## Theme Skins
+
+| Skin | Primary Color | Style |
+|---|---|---|
+| Warm Pink | `#EC4899` | Sweet, warm — perfect for moms |
+| Ocean Blue | `#3B82F6` | Clean, calm — great for dads |
+| Nature Green | `#10B981` | Fresh, natural — gender neutral |
+| Sunny Orange | `#F97316` | Energetic, warm — cheerful vibe |
+
+---
+
 ## Getting Started
 
 ### Prerequisites
 
-- Flutter SDK 3.x ([install guide](https://docs.flutter.dev/get-started/install))
-- Dart SDK (bundled with Flutter)
+- Flutter SDK 3.24+ ([install guide](https://docs.flutter.dev/get-started/install))
+- Xcode (for iOS) or Android Studio (for Android)
 
 ### Install & Run
 
@@ -80,34 +93,9 @@ Repository Layer (Abstract Interface)
 Data Layer (drift/SQLite + JSON Assets)
 ```
 
----
-
-## Data Format
-
-Records are exported as JSON. Example:
-
-```json
-{
-  "exportedAt": "2025-01-01T00:00:00Z",
-  "babies": [
-    {
-      "id": "uuid",
-      "name": "Baby",
-      "birthday": "2024-06-01"
-    }
-  ],
-  "records": [
-    {
-      "id": "uuid",
-      "babyId": "uuid",
-      "type": "breastfeeding",
-      "startTime": "2025-01-01T08:00:00Z",
-      "durationMinutes": 15,
-      "note": ""
-    }
-  ]
-}
-```
+- **Feature-first** — each module (home, record, statistics, knowledge, settings) is self-contained
+- **Repository pattern** — abstract interfaces for future cloud sync capability
+- **Stream-based** — reactive UI via `watchRecords()` streams
 
 ---
 
@@ -116,9 +104,11 @@ Records are exported as JSON. Example:
 - [x] 8 record types with quick entry
 - [x] Today overview dashboard
 - [x] Statistics with charts
-- [x] WHO growth curves (0–24 months)
+- [x] WHO growth curves (0-24 months)
 - [x] Knowledge base by age range
-- [x] Multi-baby support
+- [x] Multi-baby support with instant switching
+- [x] 4 theme skins (Claymorphism style)
+- [x] Full-screen record form with delete confirmation
 - [ ] Data export / import (file picker)
 - [ ] Feeding interval notifications
 - [ ] Growth data plotted on WHO curve chart

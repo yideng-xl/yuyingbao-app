@@ -8,9 +8,11 @@ class YuyingbaoApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final skin = ref.watch(appSkinProvider);
+
     return MaterialApp.router(
       title: '育婴宝',
-      theme: AppTheme.light,
+      theme: AppTheme.themeFor(skin),
       routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
     );

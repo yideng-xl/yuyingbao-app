@@ -1,56 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../core/constants/enums.dart';
+import '../../../core/theme/app_theme.dart';
 
-class QuickRecordButtons extends StatelessWidget {
+class QuickRecordButtons extends ConsumerWidget {
   final void Function(RecordType type) onTap;
 
   const QuickRecordButtons({super.key, required this.onTap});
 
   static const _buttons = [
-    _QuickButtonData(
-      type: RecordType.breastfeeding,
-      icon: Icons.woman,
-      color: Color(0xFFFF8A65),
-    ),
-    _QuickButtonData(
-      type: RecordType.bottle,
-      icon: Icons.local_drink,
-      color: Color(0xFF4FC3F7),
-    ),
-    _QuickButtonData(
-      type: RecordType.solid,
-      icon: Icons.restaurant,
-      color: Color(0xFF81C784),
-    ),
-    _QuickButtonData(
-      type: RecordType.diaper,
-      icon: Icons.baby_changing_station,
-      color: Color(0xFFBA68C8),
-    ),
-    _QuickButtonData(
-      type: RecordType.growth,
-      icon: Icons.straighten,
-      color: Color(0xFFFFD54F),
-    ),
-    _QuickButtonData(
-      type: RecordType.water,
-      icon: Icons.water_drop,
-      color: Color(0xFF4DD0E1),
-    ),
+    _QuickButtonData(type: RecordType.breastfeeding, icon: Icons.woman_rounded, color: AppTheme.breastfeedingColor),
+    _QuickButtonData(type: RecordType.bottle, icon: Icons.local_drink_rounded, color: AppTheme.bottleColor),
+    _QuickButtonData(type: RecordType.solid, icon: Icons.restaurant_rounded, color: AppTheme.solidColor),
+    _QuickButtonData(type: RecordType.diaper, icon: Icons.baby_changing_station_rounded, color: AppTheme.diaperColor),
+    _QuickButtonData(type: RecordType.growth, icon: Icons.straighten_rounded, color: AppTheme.growthColor),
+    _QuickButtonData(type: RecordType.water, icon: Icons.water_drop_rounded, color: AppTheme.waterColor),
   ];
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final skin = ref.watch(appSkinProvider);
+    final c = AppTheme.colorsFor(skin);
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: _buttons.map((btn) {
-          return _QuickButton(
-            data: btn,
-            onTap: () => onTap(btn.type),
-          );
-        }).toList(),
+      child: Container(
+        decoration: AppTheme.clayCard(c),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: _buttons.map((btn) {
+            return _QuickButton(data: btn, onTap: () => onTap(btn.type));
+          }).toList(),
+        ),
       ),
     );
   }
@@ -60,12 +42,7 @@ class _QuickButtonData {
   final RecordType type;
   final IconData icon;
   final Color color;
-
-  const _QuickButtonData({
-    required this.type,
-    required this.icon,
-    required this.color,
-  });
+  const _QuickButtonData({required this.type, required this.icon, required this.color});
 }
 
 class _QuickButton extends StatelessWidget {
@@ -76,29 +53,31 @@ class _QuickButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        GestureDetector(
-          onTap: onTap,
-          child: Container(
-            width: 48,
-            height: 48,
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 52,
+            height: 52,
             decoration: BoxDecoration(
-              color: data.color.withValues(alpha: 0.15),
-              shape: BoxShape.circle,
+              color: data.color.withValues(alpha: 0.12),
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(color: data.color.withValues(alpha: 0.2), width: 1.5),
             ),
-            child: Icon(data.icon, color: data.color, size: 24),
+            child: Icon(data.icon, color: data.color, size: 26),
           ),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          data.type.label,
-          style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
-        ),
-      ],
+          const SizedBox(height: 6),
+          Text(
+            data.type.label,
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
+              color: AppTheme.textMuted,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
