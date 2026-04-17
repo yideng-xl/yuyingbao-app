@@ -6,7 +6,7 @@
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)
 [![Version](https://img.shields.io/badge/version-0.6.0-EC4899)](https://github.com/yideng-xl/yuyingbao-app/releases)
 
-[English](./README.md) | 中文
+[English](./README.md) | 中文 | [日本語](./README.ja.md) | [한국어](./README.ko.md)
 
 基于 Flutter 的本地优先婴儿护理记录应用 — 无云端、无账号，数据完全掌控在自己手中。
 
@@ -28,7 +28,7 @@
 - **快速记录** — 常用操作一键录入，全屏表单方便填写
 - **数据统计** — 喂养量柱状图、尿布趋势折线图
 - **WHO 生长曲线** — 0-24 个月，P3 / P15 / P50 / P85 / P97 百分位线
-- **育儿知识库** — 按月龄分类，支持搜索和筛选
+- **育儿知识库** — 按月龄分类的 Markdown 富文本文章，支持搜索和筛选
 - **4 套主题皮肤** — 温馨粉、清新蓝、自然绿、暖阳橙，设置页即时切换
 - **Claymorphism 风格** — 柔和 3D、大圆角、轻柔阴影，温馨友好的视觉体验
 - **多语言支持** — 中文、英文、日文、韩文，设置页即时切换
@@ -48,6 +48,9 @@
 | 本地数据库 | drift (SQLite) |
 | 路由导航 | go_router |
 | 图表 | fl_chart |
+| Markdown 渲染 | flutter_markdown |
+| 本地通知 | flutter_local_notifications |
+| 国际化 | flutter_localizations + ARB |
 | 主题 | flex_color_scheme |
 
 ---

@@ -6,7 +6,7 @@
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)
 [![Version](https://img.shields.io/badge/version-0.6.0-EC4899)](https://github.com/yideng-xl/yuyingbao-app/releases)
 
-[中文](./README.zh-CN.md) | English
+[中文](./README.zh-CN.md) | English | [日本語](./README.ja.md) | [한국어](./README.ko.md)
 
 A local-first baby care tracking app built with Flutter — no cloud, no account, just your data.
 
@@ -28,7 +28,7 @@ A local-first baby care tracking app built with Flutter — no cloud, no account
 - **Quick record** — one-tap buttons for the most frequent actions, full-screen form for easy input
 - **Statistics** — bar and line charts for feeding and growth trends
 - **WHO growth curves** — 0-24 months, P3 / P15 / P50 / P85 / P97 percentile lines
-- **Knowledge base** — age-appropriate baby care articles with search and age filter
+- **Knowledge base** — age-appropriate baby care articles with Markdown rendering, search and age filter
 - **4 theme skins** — Warm Pink, Ocean Blue, Nature Green, Sunny Orange — switch instantly in settings
 - **Claymorphism UI** — soft 3D, rounded corners, gentle shadows for a warm and friendly feel
 - **Multi-language** — Chinese, English, Japanese, Korean — switch in settings
@@ -48,6 +48,9 @@ A local-first baby care tracking app built with Flutter — no cloud, no account
 | Local Database | drift (SQLite) |
 | Navigation | go_router |
 | Charts | fl_chart |
+| Markdown | flutter_markdown |
+| Notifications | flutter_local_notifications |
+| i18n | flutter_localizations + ARB |
 | Theming | flex_color_scheme |
 
 ---
